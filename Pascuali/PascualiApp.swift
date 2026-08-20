@@ -1,17 +1,21 @@
-//
-//  PascualiApp.swift
-//  Pascuali
-//
-//  Created by Alex Tovar on 30/12/25.
-//
-
 import SwiftUI
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure() // <--- ¡AQUÍ ENCIENDE FIREBASE!
+    return true
+  }
+}
 
 @main
 struct PascualiApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
     }
+  }
 }
